@@ -1,0 +1,9 @@
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/controller/dto/GoodsResponseDto.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/config/ExceptionHandlerConfig.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/controller/dto/GoodsRequestDto.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/StorageApplication.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/reposiory/GoodsRepository.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/model/Goods.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/config/ErrorResponseDTO.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/sevice/GoodsService.java
+/Users/vleg1991/IdeaProjects/own/storage/src/main/java/mediaSoft/storage/controller/GoodsController.java

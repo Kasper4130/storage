@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "692da7cf-5075-441a-b771-3d454d1d3602",
+		"name": "Goods App Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "2320754"
+	},
+	"item": [
+		{
+			"name": "Create good1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"good1\",\n    \"article\": \"123321\",\n    \"description\": \"Хороший good1\",\n    \"goodCategory\": \"Молочная продукция\",\n    \"price\": \"0.1\",\n    \"quantity\": 100\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/goods"
+			},
+			"response": []
+		},
+		{
+			"name": "Create good2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"good2\",\n    \"article\": \"321123\",\n    \"description\": \"Хороший good2\",\n    \"goodCategory\": \"Мебель\",\n    \"price\": \"100.00\",\n    \"quantity\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/goods"
+			},
+			"response": []
+		},
+		{
+			"name": "Create good3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"good3\",\n    \"article\": \"231213\",\n    \"description\": \"Хороший good3\",\n    \"goodCategory\": \"Бытовая химия\",\n    \"price\": \"200\",\n    \"quantity\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/goods"
+			},
+			"response": []
+		},
+		{
+			"name": "Update good",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Good1\",\n    \"article\": \"1233211\",\n    \"description\": \"Хороший good1 v1\",\n    \"goodCategory\": \"Молочная продукция\",\n    \"price\": \"1.1\",\n    \"quantity\": 1001\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/goods/8f7799e7-46bd-4e32-aa9c-6c46bd713b63"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all goods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/goods"
+			},
+			"response": []
+		},
+		{
+			"name": "Get good by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Good1\",\n    \"article\": \"1233211\",\n    \"description\": \"Хороший good1 v1\",\n    \"goodCategory\": \"Молочная продукция\",\n    \"price\": \"1.1\",\n    \"quantity\": 1001\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/goods/8f7799e7-46bd-4e32-aa9c-6c46bd713b63"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete good",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Good1\",\n    \"article\": \"1233211\",\n    \"description\": \"Хороший good1 v1\",\n    \"goodCategory\": \"Молочная продукция\",\n    \"price\": \"1.1\",\n    \"quantity\": 1001\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/goods/8f7799e7-46bd-4e32-aa9c-6c46bd713b63"
+			},
+			"response": []
+		}
+	]
+}

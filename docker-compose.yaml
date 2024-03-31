@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # Define the database service
+  db:
+    image: postgres:latest
+    ports:
+      - "5432" # Map host port to container port
+    environment:
+      POSTGRES_DB: goods_db
+      POSTGRES_USER: storage
+      POSTGRES_PASSWORD: storage
+    networks:
+      - storage-network
+
+  # Define the application service
+  app:
+    build: .
+    ports:
+      - "8080:8080" # Map host port to container port
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/goods_db
+      SPRING_DATASOURCE_USERNAME: storage
+      SPRING_DATASOURCE_PASSWORD: storage
+    depends_on:
+      - db
+    networks:
+      - storage-network
+
+# Define the network to be used by the services
+networks:
+  storage-network:
+    driver: bridge

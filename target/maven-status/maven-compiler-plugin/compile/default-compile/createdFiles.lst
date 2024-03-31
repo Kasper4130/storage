@@ -1,0 +1,12 @@
+mediaSoft/storage/config/ErrorResponseDTO.class
+mediaSoft/storage/controller/dto/GoodsResponseDto$GoodsResponseDtoBuilder.class
+mediaSoft/storage/model/Goods.class
+mediaSoft/storage/controller/GoodsController.class
+mediaSoft/storage/controller/dto/GoodsResponseDto.class
+mediaSoft/storage/model/Goods$GoodsBuilder.class
+mediaSoft/storage/reposiory/GoodsRepository.class
+mediaSoft/storage/config/ErrorResponseDTO$ErrorResponseDTOBuilder.class
+mediaSoft/storage/sevice/GoodsService.class
+mediaSoft/storage/controller/dto/GoodsRequestDto.class
+mediaSoft/storage/StorageApplication.class
+mediaSoft/storage/config/ExceptionHandlerConfig.class
