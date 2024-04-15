@@ -1,4 +1,4 @@
-package mediaSoft.storage.sevice;
+package mediaSoft.storage.service;
 
 import mediaSoft.storage.controller.dto.GoodsRequestDto;
 import mediaSoft.storage.controller.dto.GoodsResponseDto;

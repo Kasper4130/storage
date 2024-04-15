@@ -1,7 +1,8 @@
-package mediaSoft.storage.sevice;
+package mediaSoft.storage.service;
 
 import mediaSoft.storage.controller.dto.GoodsRequestDto;
 import mediaSoft.storage.controller.dto.GoodsResponseDto;
+import mediaSoft.storage.exception.ArticleAlreadyExistsException;
 import mediaSoft.storage.model.Goods;
 import mediaSoft.storage.reposiory.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,9 +45,14 @@ public class GoodsService {
      * @return good
      */
     public GoodsResponseDto createGood(GoodsRequestDto requestDto) {
-        return goodsToResponseDto(
-                goodsRepository.save(requestDtoToGoods(requestDto))
-        );
+
+        Goods goods = goodsRepository.findByArticle(requestDto.getArticle());
+        if (goods == null) {
+            return goodsToResponseDto(
+                    goodsRepository.save(requestDtoToGoods(requestDto))
+            );
+        }
+        throw new ArticleAlreadyExistsException(requestDto.getArticle());
     }
 
     /**
@@ -56,12 +62,18 @@ public class GoodsService {
      * @return good
      */
     public GoodsResponseDto updateGood(UUID id, GoodsRequestDto requestDto) {
-        Goods existingGoods = goodsRepository.findById(id).orElseThrow();
-        Goods newGoods = requestDtoToGoods(requestDto);
-        newGoods.setId(existingGoods.getId());
-        return goodsToResponseDto(
-                goodsRepository.save(newGoods)
-        );
+
+        Goods goods = goodsRepository.findByArticle(requestDto.getArticle());
+        if (goods == null) {
+
+            Goods existingGoods = goodsRepository.findById(id).orElseThrow();
+            Goods newGoods = requestDtoToGoods(requestDto);
+            newGoods.setId(existingGoods.getId());
+            return goodsToResponseDto(
+                    goodsRepository.save(newGoods)
+            );
+        }
+        throw new ArticleAlreadyExistsException(requestDto.getArticle());
     }
 
     /**
@@ -69,6 +81,7 @@ public class GoodsService {
      * @param id of a good
      */
     public void deleteGoodById(UUID id) {
+        goodsRepository.findById(id).orElseThrow();
         goodsRepository.deleteById(id);
     }
 

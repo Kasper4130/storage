@@ -3,7 +3,7 @@ package mediaSoft.storage.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import mediaSoft.storage.controller.dto.GoodsRequestDto;
 import mediaSoft.storage.controller.dto.GoodsResponseDto;
-import mediaSoft.storage.sevice.GoodsService;
+import mediaSoft.storage.service.GoodsService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

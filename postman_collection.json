@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "692da7cf-5075-441a-b771-3d454d1d3602",
+		"_postman_id": "098b05a9-35bd-4883-b72c-02e26d5de6f3",
 		"name": "Goods App Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "2320754"
+		"_exporter_id": "26640353"
 	},
 	"item": [
 		{
@@ -20,7 +20,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/goods"
+				"url": "http://localhost:8080/my-app/goods"
 			},
 			"response": []
 		},
@@ -38,7 +38,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/goods"
+				"url": "http://localhost:8080/my-app/goods"
 			},
 			"response": []
 		},
@@ -56,25 +56,25 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/goods"
+				"url": "http://localhost:8080/my-app/goods"
 			},
 			"response": []
 		},
 		{
-			"name": "Update good",
+			"name": "Create double Article good3",
 			"request": {
-				"method": "PUT",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Good1\",\n    \"article\": \"1233211\",\n    \"description\": \"Хороший good1 v1\",\n    \"goodCategory\": \"Молочная продукция\",\n    \"price\": \"1.1\",\n    \"quantity\": 1001\n}",
+					"raw": "{\r\n    \"name\": \"good4\",\r\n    \"article\": \"231213\",\r\n    \"description\": \"Хороший good4\",\r\n    \"goodCategory\": \"Бытовая химия\",\r\n    \"price\": \"500\",\r\n    \"quantity\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/goods/8f7799e7-46bd-4e32-aa9c-6c46bd713b63"
+				"url": "http://localhost:8080/my-app/goods"
 			},
 			"response": []
 		},
@@ -83,7 +83,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:8080/goods"
+				"url": "http://localhost:8080/my-app/goods"
 			},
 			"response": []
 		},
@@ -104,25 +104,43 @@
 						}
 					}
 				},
-				"url": "http://localhost:8080/goods/8f7799e7-46bd-4e32-aa9c-6c46bd713b63"
+				"url": "http://localhost:8080/my-app/goods/1bb79eff-416f-48bf-a3f5-9116d4bbbb20"
 			},
 			"response": []
 		},
 		{
-			"name": "Delete good",
+			"name": "Update quantity good1",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Good1\",\n    \"article\": \"1233211\",\n    \"description\": \"Хороший good1 v1\",\n    \"goodCategory\": \"Молочная продукция\",\n    \"price\": \"1.1\",\n    \"quantity\": 1001\n}",
+					"raw": "{\n    \"name\": \"good1\",\n    \"article\": \"123321\",\n    \"description\": \"Хороший good1\",\n    \"goodCategory\": \"Молочная продукция\",\n    \"price\": \"0.1\",\n    \"quantity\": 100500\n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:8080/goods/8f7799e7-46bd-4e32-aa9c-6c46bd713b63"
+				"url": "http://localhost:8080/my-app/goods/76919818-2359-4194-9104-a34e1a6bf668"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete good",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/my-app/goods/76919818-2359-4194-9104-a34e1a6bf668"
 			},
 			"response": []
 		}

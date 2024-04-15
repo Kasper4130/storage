@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -35,7 +33,7 @@ public class Goods {
     private String name;
 
     @NotBlank
-    @Column(name = "article", nullable = false)
+    @Column(name = "article", nullable = false, unique = true)
     private String article;
 
     @Column(name = "description")
