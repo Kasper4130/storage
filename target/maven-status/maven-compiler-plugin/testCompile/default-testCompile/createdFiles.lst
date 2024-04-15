@@ -1,1 +1,3 @@
-mediaSoft/storage/StorageApplicationTests.class
+mediaSoft\storage\StorageApplicationTests.class
+mediaSoft\storage\controller\GoodsControllerTest.class
+mediaSoft\storage\sevice\GoodsServiceTest.class

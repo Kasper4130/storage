@@ -1,7 +1,22 @@
+server:
+  servlet:
+    context-path: /my-app
+  port: ${SERVER_PORT:8080}
+
 spring:
   application:
     name: "storage"
   datasource:
     url: "jdbc:postgresql://localhost:5432/goods_db"
-  flyway:
-    baseline-on-migrate: true
+    username: postgres
+    password: ${PWD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+      show-sql: false
+
+  liquibase:
+    change-log: classpath:db/migration/changelog.xml

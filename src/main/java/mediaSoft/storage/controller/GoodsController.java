@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import mediaSoft.storage.controller.dto.GoodsRequestDto;
 import mediaSoft.storage.controller.dto.GoodsResponseDto;
-import mediaSoft.storage.sevice.GoodsService;
+import mediaSoft.storage.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

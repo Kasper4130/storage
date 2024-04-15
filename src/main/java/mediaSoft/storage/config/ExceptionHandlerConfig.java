@@ -2,6 +2,7 @@ package mediaSoft.storage.config;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import mediaSoft.storage.exception.ArticleAlreadyExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,6 +33,17 @@ public class ExceptionHandlerConfig {
     public ErrorResponseDTO handle(NoSuchElementException exception, HttpServletResponse response) {
         log.warn("Not found problem", exception);
         response.setStatus(HttpStatus.NOT_FOUND.value());
+        return ErrorResponseDTO.builder().message(exception.getMessage()).build();
+    }
+
+    /**
+     * Handle article already exists exceptions and wrap it with {@link HttpStatus}.CONFLICT
+     * @return error dto with message
+     */
+    @ExceptionHandler(ArticleAlreadyExistsException.class)
+    public ErrorResponseDTO handle(ArticleAlreadyExistsException exception, HttpServletResponse response) {
+        log.warn("Such an article is exists: ", exception);
+        response.setStatus(HttpStatus.CONFLICT.value());
         return ErrorResponseDTO.builder().message(exception.getMessage()).build();
     }
 
