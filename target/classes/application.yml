@@ -20,3 +20,15 @@ spring:
 
   liquibase:
     change-log: classpath:db/migration/changelog.xml
+
+app:
+  scheduling:
+    mode: optimized
+    period: 60000 #ms
+    priceIncreasePercentage: 10.1
+    logFile: log_file.txt
+    optimization:
+      exclusive-lock: false
+
+java:
+  options: -Xmx500m

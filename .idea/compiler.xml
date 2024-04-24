@@ -8,14 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="storage12.04" />
+        <module name="storage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="storage" target="17" />
       <module name="storage12.04" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="storage" options="-parameters" />
       <module name="storage12.04" options="-parameters" />
     </option>
   </component>

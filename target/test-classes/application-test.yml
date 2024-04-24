@@ -1,4 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:h2:mem:test_goods_db
-#       "jdbc:h2:./test_goods_db"
