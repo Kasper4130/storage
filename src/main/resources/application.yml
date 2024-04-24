@@ -26,6 +26,7 @@ app:
     mode: optimized
     period: 60000 #ms
     priceIncreasePercentage: 10.1
+    logFile: log_file.txt
     optimization:
       exclusive-lock: false
 

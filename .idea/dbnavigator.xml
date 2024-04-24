@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="5054a385-39a7-4c44-8c2a-fd259145ebbb">
-      <console name="Connection" type="STANDARD" schema="postgres" session="Main" />
+      <console name="Connection" type="STANDARD" schema="public" session="Main" />
     </connection>
     <connection id="8930d2b9-bf56-4ec0-a074-8d1c66488503">
       <console name="goods_db" type="STANDARD" schema="public" session="Main"><![CDATA[Update goods
