@@ -8,16 +8,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
+import java.util.*;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.ArgumentMatchers.any;
@@ -37,20 +39,28 @@ public class GoodsControllerTest {
     @MockBean
     private GoodsService goodsService;
 
+    @Autowired
+    ObjectMapper objectMapper;
+
     @Test
     public void getAllGoods_Success_ShouldReturnListOfGoods() throws Exception {
         GoodsResponseDto dto1 = createResponseGood1(UUID.randomUUID().toString());
         GoodsResponseDto dto2 = createResponseGood2(UUID.randomUUID().toString());
         List<GoodsResponseDto> goodsList = Arrays.asList(dto1, dto2);
 
-        given(goodsService.getAllGoods()).willReturn(goodsList);
+        Page<GoodsResponseDto> goodsPage = new PageImpl<>(goodsList);
+        MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
+        queryParams.add("page", String.valueOf(0));
+        queryParams.add("size", String.valueOf(2));
 
-        mockMvc.perform(get("/goods"))
+        given(goodsService.getAllGoods(any(Pageable.class))).willReturn(goodsPage);
+
+        mockMvc.perform(get("/goods").params(queryParams))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].name").value("Good1"))
-                .andExpect(jsonPath("$[1].name").value("Good2"));
+                .andExpect(jsonPath("$.content", hasSize(2)))
+                .andExpect(jsonPath("$.content[0].name").value("Good1"))
+                .andExpect(jsonPath("$.content[1].name").value("Good2"));
     }
 
     @Test
