@@ -9,6 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
@@ -51,8 +55,11 @@ public class GoodsServiceTest {
 
     @Test
     void getAllGoods_ShouldReturnListOfGoods() {
-        when(goodsRepository.findAll()).thenReturn(Collections.singletonList(good));
-        List<GoodsResponseDto> result = goodsService.getAllGoods();
+        Pageable pageable = PageRequest.of(0, 10);
+        when(goodsRepository.findAll(pageable)).thenReturn(new PageImpl<>(Collections.singletonList(good)));
+        Page<GoodsResponseDto> resultPage = goodsService.getAllGoods(pageable);
+        List<GoodsResponseDto> result = resultPage.getContent();
+
         assertFalse(result.isEmpty());
         assertEquals(1, result.size());
         assertEquals(goodId.toString(), result.get(0).getId());
@@ -83,6 +90,7 @@ public class GoodsServiceTest {
     @Test
     void deleteGoodById_ShouldCallDeleteMethod() {
         doNothing().when(goodsRepository).deleteById(goodId);
+        when(goodsRepository.findById(goodId)).thenReturn(Optional.of(good));
         goodsService.deleteGoodById(goodId);
         verify(goodsRepository).deleteById(goodId);
     }

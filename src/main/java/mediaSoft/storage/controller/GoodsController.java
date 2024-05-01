@@ -8,7 +8,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import mediaSoft.storage.controller.dto.GoodsRequestDto;
 import mediaSoft.storage.controller.dto.GoodsResponseDto;
 import mediaSoft.storage.service.GoodsService;
+import mediaSoft.storage.service.search.criteria.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -36,8 +43,24 @@ public class GoodsController {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved list")
     })
     @GetMapping
-    public ResponseEntity<List<GoodsResponseDto>> getAllGoods() {
-        List<GoodsResponseDto> goodsList = goodsService.getAllGoods();
+    public ResponseEntity<Page<GoodsResponseDto>> getAllGoods(@RequestParam int page,
+                                                              @RequestParam int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<GoodsResponseDto> goodsPage = goodsService.getAllGoods(pageable);
+        return ResponseEntity.ok(goodsPage);
+    }
+
+    @Operation(summary = "Search for Goods with criteria")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved list"),
+            @ApiResponse(responseCode = "400", description = "Bad Request - Invalid parameters or validation failed"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error - An unexpected error occurred")
+    })
+    @GetMapping("/search")
+    public <T> ResponseEntity<List<GoodsResponseDto>> searchGoods(@Valid @RequestBody List<SearchCriteria<T>> listDto,
+                                                                  @RequestParam int page,
+                                                                  @RequestParam int size) {
+        List<GoodsResponseDto> goodsList = goodsService.searchGoods(listDto, PageRequest.of(page, size));
         return ResponseEntity.ok(goodsList);
     }
 
